@@ -1,14 +1,7 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from './app.module.css';
-
-import NxWelcome from './nx-welcome';
+import Header from '../atoms/header/header'
 
 export function App() {
-  return (
-    <div>
-      <NxWelcome title="nx-react" />
-    </div>
-  );
+  return <Header text="Hello NX!" />
 }
 
-export default App;
+export default App

@@ -10,5 +10,20 @@
       "files": ["*.js", "*.jsx"],
       "rules": {}
     }
+  ],
+  "rules": {
+    "semi": "off"
+  },
+  "@nx/enforce-module-boundaries": [
+    "error",
+    {
+      "allow": [],
+      "depConstraints": [
+        {
+          "sourceTag": "*",
+          "onlyDependOnLibsWithTags": ["*"]
+        }
+      ]
+    }
   ]
 }

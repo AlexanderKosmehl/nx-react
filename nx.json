@@ -11,7 +11,8 @@
           "build",
           "lint",
           "test",
-          "e2e"
+          "e2e",
+          "build-storybook"
         ],
         "accessToken": "MTIyNTZiNmUtMmY4Yi00OTQ3LTk2NzUtMDQ2MzAwN2M0YTQwfHJlYWQtd3JpdGU="
       }
@@ -19,19 +20,11 @@
   },
   "targetDefaults": {
     "build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "inputs": [
-        "production",
-        "^production"
-      ]
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     },
     "test": {
-      "inputs": [
-        "default",
-        "^production"
-      ]
+      "inputs": ["default", "^production"]
     },
     "lint": {
       "inputs": [
@@ -41,22 +34,27 @@
       ]
     },
     "e2e": {
+      "inputs": ["default", "^production"]
+    },
+    "build-storybook": {
       "inputs": [
         "default",
-        "^production"
+        "^production",
+        "{projectRoot}/.storybook/**/*",
+        "{projectRoot}/tsconfig.storybook.json"
       ]
     }
   },
   "namedInputs": {
-    "default": [
-      "{projectRoot}/**/*",
-      "sharedGlobals"
-    ],
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "production": [
       "default",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
       "!{projectRoot}/tsconfig.spec.json",
-      "!{projectRoot}/.eslintrc.json"
+      "!{projectRoot}/.eslintrc.json",
+      "!{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)",
+      "!{projectRoot}/.storybook/**/*",
+      "!{projectRoot}/tsconfig.storybook.json"
     ],
     "sharedGlobals": []
   },
